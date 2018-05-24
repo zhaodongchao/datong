@@ -1,0 +1,47 @@
+server:
+  context-path: /dt
+  port: 8081
+#配置redis
+spring:
+  redis:
+    port: 6378
+    host: wisemen
+    database: 0
+    password:
+    pool:
+      max-active: 10
+      min-idle: 0
+    timeout: 10000
+#配置mysql驱动
+  datasource:
+    url: jdbc:mysql://localhost:3306/dt?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: dongchao
+    password: 920204
+    schema: classpath:sql/mysql-schema.sql
+    initialize: false
+#database pool
+    tomcat:
+      max-idle: 15
+      max-wait: 1000
+      max-active: 50
+      min-idle: 5
+      initial-size: 10
+      validation-query: select 1
+      test-on-borrow: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 18000
+      jdbc-interceptors: ConnectionState;SlowQueryReport(threshold=0)
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+# spring batch
+#将enabled设置为true，禁止spring batch在启动执行所有批处理任务,因为实际环境会交给定时器或者手动触发批处理
+  batch:
+    job:
+      enabled: false
+# JMS
+  activemq:
+    broker-url: tcp://dongchao-work-computer:61616
+

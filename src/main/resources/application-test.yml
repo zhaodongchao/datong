@@ -1,0 +1,16 @@
+#初始化默认的表结构，默认的schema.sql文件会自动初始化表结构，data.sql文件会自动填充数据
+server:
+  port: 8080
+  context-path: /dt
+
+spring:
+  datasource:
+    platform: h2
+    schema: classpath:sql/h2-schema.sql
+    data: classpath:sql/h2-data.sql
+    driver-class-name: org.h2.Driver
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
