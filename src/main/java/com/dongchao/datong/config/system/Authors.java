@@ -1,4 +1,4 @@
-package com.dongchao.datong.system;
+package com.dongchao.datong.config.system;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

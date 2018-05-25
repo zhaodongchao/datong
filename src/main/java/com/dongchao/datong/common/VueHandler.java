@@ -1,6 +1,6 @@
 package com.dongchao.datong.common;
 
-import com.dongchao.datong.system.Authors;
+import com.dongchao.datong.config.system.Authors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

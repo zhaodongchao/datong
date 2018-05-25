@@ -1,4 +1,4 @@
-package com.dongchao.datong.system.data;
+package com.dongchao.datong.data;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
