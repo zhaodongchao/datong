@@ -82,10 +82,15 @@
                 </exclusion>
             </exclusions>
         </dependency>
-                <!--添加spring boot actuator监控-->
+        <!--添加spring boot actuator监控-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!--导入rabbitMQ的依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
         <!--添加spring cloud eureka 依赖-->
         <!-- <dependency>
@@ -114,10 +119,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jms</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-client</artifactId>
         </dependency>
 
         <dependency>
