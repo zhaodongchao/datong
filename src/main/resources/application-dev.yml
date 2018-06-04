@@ -19,19 +19,8 @@ spring:
     username: dongchao
     password: 920204
     schema: classpath:sql/mysql-schema.sql
-    initialize: false
-#database pool
-    tomcat:
-      max-idle: 15
-      max-wait: 1000
-      max-active: 50
-      min-idle: 5
-      initial-size: 10
-      validation-query: select 1
-      test-on-borrow: false
-      test-while-idle: true
-      time-between-eviction-runs-millis: 18000
-      jdbc-interceptors: ConnectionState;SlowQueryReport(threshold=0)
+#database pool,默认使用tomcat数据源，此处指定为druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
   jpa:
     hibernate:
       ddl-auto: update
