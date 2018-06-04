@@ -14,13 +14,25 @@ spring:
     timeout: 10000
 #配置mysql驱动
   datasource:
-    url: jdbc:mysql://localhost:3306/dt?useUnicode=true&characterEncoding=utf-8&useSSL=false
-    driver-class-name: com.mysql.jdbc.Driver
-    username: dongchao
-    password: 920204
+    username: root
+    password: 123456
     schema: classpath:sql/mysql-schema.sql
-#database pool,默认使用tomcat数据源，此处指定为druid数据源
+    #database pool,默认使用tomcat数据源，此处指定为druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
+    #Druid 数据源配置，继承spring.datasource.* 配置，相同则覆盖,Spring Boot 2.X 版本不再支持配置继承
+    druid:
+      url: jdbc:mysql://localhost:3306/dt?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      max-active: 20
+      initial-size: 10
+      max-wait: 60000
+      min-idle: 5
+      async-init: true  # asyncInit是1.1.4中新增加的配置，如果有initialSize数量较多时，打开会加快应用启动时间
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      driver-class-name: com.mysql.jdbc.Driver #实际上数据驱动不用配置，druid可以根据url自动识别classpath上的驱动
   jpa:
     hibernate:
       ddl-auto: update
