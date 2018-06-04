@@ -18,7 +18,7 @@ public class UserDao {
         stringRedisTemplate.opsForValue().set(key,value);
     }
     public void save(User user){
-       redisTemplate.opsForValue().set(user.getId(),user);
+       redisTemplate.opsForValue().setIfAbsent(user.getId(),user);
     }
     public String getStr(String key){
        return stringRedisTemplate.opsForValue().get(key);

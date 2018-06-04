@@ -4,9 +4,9 @@ server:
 #配置redis
 spring:
   redis:
-    port: 6378
-    host: wisemen
-    database: 0
+    port: 6379
+    host: www.dongchao.com
+    database: 1
     password:
     pool:
       max-active: 10
@@ -47,3 +47,8 @@ spring:
     port: 5672
     username: guest
     password: guest
+  http:
+    multipart:
+      enabled: true
+      max-file-size: -1 #-1表示不限制上传文件大小
+      location: C:\tmp\upload

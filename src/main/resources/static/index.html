@@ -8,8 +8,18 @@
 </head>
 <body>
 <form enctype="multipart/form-data" method="post" action="/dt/upload">
-    图片<input type="file" name="file"/>
+    excel导入<input type="file" name="file"/>
     <input type="submit" value="上传"/>
+</form>
+<form enctype="multipart/form-data" method="post" action="/dt/upload/single">
+    单文件上传<input type="file" name="file"/>
+    <input type="submit" value="上传"/>
+</form>
+<form method="POST" enctype="multipart/form-data" action="/dt/upload/multi">
+    <p>多文件上传：</>
+    <p>文件1：<input type="file" name="file" /></p>
+    <p>文件2：<input type="file" name="file" /></p>
+    <p><input type="submit" value="上传" /></p>
 </form>
 <div id="app">
     {{ message }}
