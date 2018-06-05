@@ -1,5 +1,6 @@
 package com.dongchao.datong.common.upload;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.List;
-
+@Slf4j
 @RestController
 public class UploadController {
     @Value("${spring.http.multipart.location}")
@@ -22,8 +23,8 @@ public class UploadController {
 
     @PostMapping(value = {"/upload/single"})
     public String uploadingFile(@RequestParam("file") MultipartFile file) {
-        // 获取上传文件的路径
         writeFile(file,uploadPath);
+        log.info("成功上传文件："+file.getOriginalFilename());
         return "上传成功！文件：" + file.getOriginalFilename();
     }
 
@@ -48,10 +49,8 @@ public class UploadController {
 
     private void writeFile(MultipartFile file,String destination){
         String uploadFile = parseFileName(file.getOriginalFilename());
-        System.out.println("uploadFlePath:" + file.getOriginalFilename());
+        log.info("正在写入文件"+uploadFile+"到："+destination);
 
-
-        System.out.println("------------->" + destination);
         FileChannel readChannel = null;
         FileChannel writeChannel = null;
         try {
@@ -80,9 +79,9 @@ public class UploadController {
                 byteBuffer.flip();
                 writeChannel.write(byteBuffer);
             }
-
+            log.info(uploadFile+"写入文件成功!");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("上传文件"+uploadFile+" 发生异常："+e.getMessage());
         }finally {
             if (null != readChannel) {
                 try {
